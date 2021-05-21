@@ -3,11 +3,8 @@
 """
 Created on Thu Mar 18 08:16:48 2021
 
-@author: raphaelbailly
+@author: joelda
 """
-""" Examen Informatique S6 
-Nom : Joelda Kpodja 
-Numero Etudiant : 11 81 88 23 """
 
 from shapes import *
 import numpy as np
