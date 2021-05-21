@@ -29,12 +29,23 @@ def grad_desc_n(f, param, dim, nb_iter, step = 0.01, x_0 = None):
     for i in range(nb_iter):
         dx = grad_f(x, param)*step
         x -= dx
-        if i%10 == 0:
-            print(i, f(x,param))
+        print(i, f(x,param))
     return np.array(x)
 
-
-
+def grad_desc_stoch(f, param, dim, nb_iter, mini_batch = 100, step = 0.01, x_0 = None):
+    if x_0 is None:
+        x_0 = np.random.randn(dim)
+    grad_f = grad_n(f)
+    x = x_0
+    for i in range(nb_iter):
+        idx = np.random.randint(param.shape[0], size=mini_batch)
+        param_stoch = param[idx]
+        k = 1000
+        step_stoch = step*k/(i+k)
+        dx = grad_f(x, param_stoch)*step
+        x -= dx
+        if i%10 == 0: print(i, f(x,param))
+    return np.array(x)
 
 
 
